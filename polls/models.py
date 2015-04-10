@@ -1,11 +1,11 @@
+#coding=utf-8
 from django.db import models
-
-# Create your models here.
 class Question(models.Model):
-    question_text = models.CharField(max_length=200)
-    pub_data = models.DateTimeField('date published')
+    question_text = models.CharField(max_length=200,name="gameName")
+    pub_data = models.DateTimeField("time")
+    models.Model.name="xxxx"
     def __str__(self):
-        return self.question_text
+        return self.gameName
 
 class Choice(models.Model):
     question = models.ForeignKey(Question)

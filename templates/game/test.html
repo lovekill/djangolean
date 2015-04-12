@@ -1,7 +1,9 @@
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>
+<script type="text/javascript" src="http://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
 {% if game%}
     {{game.game_id}}
     {{game.game_name}}
-    <table>
+    <table id="dg" class="easyui-datagrid" url="game/test?cp_id=1" style="width:550px;height:250px" rownumbers="true" fitColumns="true" singleSelect="true">
     <tr>
       <th>
         渠道编号
@@ -12,10 +14,10 @@
     </tr>
     {% for chanel in game.chanel.all%}
     <tr>
-      <th>
+      <th field="渠道编号" width="50">
         {{chanel.chanel_id}}
       </th>
-    <th>
+    <th field = "渠道名字" width = "50">
         {{chanel.chanel_name}} 
     </th>
     </tr>

@@ -26,7 +26,6 @@ def init(request):
 def testTemp(request):
     try:
         game = Game.objects.get(pk=request.GET["cp_id"])
-        print loader.get_template()
         template = loader.get_template('game/test.html')
         context = RequestContext(request,{
             'game':game,

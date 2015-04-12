@@ -1,0 +1,26 @@
+{% if game%}
+    {{game.game_id}}
+    {{game.game_name}}
+    <table>
+    <tr>
+      <th>
+        渠道编号
+      </th>
+      <th>
+        渠道名字
+      </th>
+    </tr>
+    {% for chanel in game.chanel.all%}
+    <tr>
+      <th>
+        {{chanel.chanel_id}}
+      </th>
+    <th>
+        {{chanel.chanel_name}} 
+    </th>
+    </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}

@@ -3,4 +3,5 @@ from django.shortcuts import render
 from django.http import HttpResponse
 # Create your views here.
 def index(request):
+    name = ""
     return HttpResponse("Hello,world,You'rat the polls index."+request.GET["qqq"])

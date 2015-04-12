@@ -8,4 +8,5 @@ urlpatterns = [
 
     url(r'^polls/',include('polls.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^game/',include('game.urls')),
 ]

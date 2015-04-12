@@ -1,0 +1,11 @@
+{% if game%}
+    <ul>
+    {{game.game_id}}
+    {{game.game_name}}
+    {% for chanel in game.chanel %}
+        <li><a href="/game/{{ chanel.chanel_id}}/">{{ chanel.chanel_id}}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}

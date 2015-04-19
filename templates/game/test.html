@@ -1,28 +1,24 @@
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>
-<script type="text/javascript" src="http://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
-{% if game%}
-    {{game.game_id}}
-    {{game.game_name}}
-    <table id="dg" class="easyui-datagrid" url="game/test?cp_id=1" style="width:550px;height:250px" rownumbers="true" fitColumns="true" singleSelect="true">
-    <tr>
-      <th>
-        渠道编号
-      </th>
-      <th>
-        渠道名字
-      </th>
-    </tr>
-    {% for chanel in game.chanel.all%}
-    <tr>
-      <th field="渠道编号" width="50">
-        {{chanel.chanel_id}}
-      </th>
-    <th field = "渠道名字" width = "50">
-        {{chanel.chanel_name}} 
-    </th>
-    </tr>
-    {% endfor %}
+<head>
+    <meta charset="UTF-8">
+    <title>SDK后台</title>
+    <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/color.css">
+    <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/demo/demo.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>
+    <script type="text/javascript" src="http://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
+</head>
+    <table id="dg" title="游戏列表" toolbar="#toolbar"  class="easyui-datagrid" method="get" url="test?cp_id=1" style="width:550px;height:250px" rownumbers="true" fitColumns="true" singleSelect="true">
+       <thead>
+            <tr>
+                <th field="gameId" editor="{type:'validatebox',options:{required:true}}" width="50">游戏编号</th>
+                <th field="gameName" editor="{type:'validatebox',options:{required:true}}" width="50">游戏名字</th>
+            </tr>
+        </thead>
     </table>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+       <div id="toolbar">
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="javascript:$('#dg').edatagrid('addRow')">增加</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="javascript:$('#dg').edatagrid('destroyRow')">删除</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="javascript:$('#dg').edatagrid('saveRow')">保存</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onclick="javascript:$('#dg').edatagrid('cancelRow')">取消</a>
+    </div>

@@ -2,6 +2,8 @@
 from django.shortcuts import render
 from django.shortcuts import HttpResponse
 from django.template import RequestContext,loader
+from django.shortcuts import render_to_response
+from django.core import serializers
 from game.models import Game
 from game.models import Chanel
 import json
@@ -25,12 +27,16 @@ def init(request):
 
 def testTemp(request):
     try:
-        game = Game.objects.get(pk=request.GET["cp_id"])
-        template = loader.get_template('game/test.html')
-        context = RequestContext(request,{
-            'game':game,
-            })
-        return HttpResponse(template.render(context))
+        games = Game.objects.all()
+        data =[]
+        for ga in games:
+            dict = {"gameId":ga.game_id,"gameName":ga.game_name}
+            data.append(dict)
+        string = json.dumps(data)
+        return HttpResponse(string)
     except Exception as e :
         print e
         return HttpResponse("xxxxx")
+
+def easyui(request):
+    return render_to_response('game/test.html')
